@@ -1,6 +1,15 @@
 # Description
 
-This repository is meant to serve as a general template for how to set up new repositories in the JogetOSS organization. 
+**JDBC Form Validator**
+
+JDBC Validator allows user to perform validation by writing a sql query. It supports single and multiple where clauses using placeholder (?) and form fields placeholders using curly braces. The ? and the form fields can appear in any order / number of times.
+
+## Use Cases
+* SELECT id FROM table WHERE id = ? OR username = ? 
+* SELECT id FROM table WHERE id = ? OR username = {formFieldId}
+* SELECT id FROM table WHERE id = ? OR username = {formFieldId} AND email = ${formFieldId} OR name = ?
+
+
 
 # Getting Help
 

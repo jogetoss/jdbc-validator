@@ -1,0 +1,84 @@
+[{
+    title : '@@org.joget.marketplace.jdbcvalidator.configValidator@@',
+    properties : [{
+        name : 'jdbcDatasource',
+        label : '@@org.joget.marketplace.jdbcvalidator.datasource@@',
+        type : 'selectbox',
+        options : [{
+            value : 'custom',
+            label : '@@org.joget.marketplace.jdbcvalidator.customDatasource@@'
+        },{
+            value : 'default',
+            label : '@@org.joget.marketplace.jdbcvalidator.defaultDatasource@@'
+        }],
+        value : 'default'
+    },{
+        name : 'jdbcDriver',
+        label : '@@org.joget.marketplace.jdbcvalidator.driver@@',
+        description : '@@org.joget.marketplace.jdbcvalidator.driver.desc@@',
+        type : 'textfield',
+        value : 'com.mysql.jdbc.Driver',
+        control_field: 'jdbcDatasource',
+        control_value: 'custom',
+        control_use_regex: 'false',
+        required : 'true'
+    },{
+        name : 'jdbcUrl',
+        label : '@@org.joget.marketplace.jdbcvalidator.url@@',
+        type : 'textfield',
+        value : 'jdbc:mysql://localhost/jwdb?characterEncoding=UTF8&useSSL=false',
+        control_field: 'jdbcDatasource',
+        control_value: 'custom',
+        control_use_regex: 'false',
+        required : 'true'
+    },{
+        name : 'jdbcUser',
+        label : '@@org.joget.marketplace.jdbcvalidator.username@@',
+        type : 'textfield',
+        control_field: 'jdbcDatasource',
+        control_value: 'custom',
+        control_use_regex: 'false',
+        value : 'root',
+        required : 'true'
+    },{
+        name : 'jdbcPassword',
+        label : '@@org.joget.marketplace.jdbcvalidator.password@@',
+        type : 'password',
+        control_field: 'jdbcDatasource',
+        control_value: 'custom',
+        control_use_regex: 'false',
+        value : ''
+    },{
+        name : 'query',
+        label : '@@org.joget.marketplace.jdbcvalidator.query@@',
+        description : '@@org.joget.marketplace.jdbcvalidator.query.desc@@',
+        type : 'codeeditor',
+        mode : 'sql',
+        required : 'true'
+    },
+    {
+        name : 'mandatory',
+        label : '@@org.joget.marketplace.jdbcvalidator@@',
+        type : 'checkbox',
+        value : 'false',
+        options : [{
+            value : 'true',
+            label : ''
+        }]
+    },
+    {
+        name : 'message',
+        label : '@@org.joget.marketplace.jdbcvalidator.message@@',
+        type : 'textfield'
+    }
+    ],
+    buttons : [{
+        name : 'testConnection',    
+        label : '@@org.joget.marketplace.jdbcvalidator.testConnection@@',
+        ajax_url : '[CONTEXT_PATH]/web/json/app[APP_PATH]/plugin/org.joget.marketplace.JdbcValidator/service?action=testConnection',
+        fields : ['jdbcDriver', 'jdbcUrl', 'jdbcUser', 'jdbcPassword'],
+        control_field: 'jdbcDatasource',
+        control_value: 'custom',
+        control_use_regex: 'false'
+    }]
+}]
