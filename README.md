@@ -7,7 +7,7 @@ JDBC Validator allows user to perform validation by writing a sql query. It supp
 ## Use Cases
 * SELECT id FROM table WHERE id = ? OR username = ? 
 * SELECT id FROM table WHERE id = ? OR username = {formFieldId}
-* SELECT id FROM table WHERE id = ? OR username = {formFieldId} AND email = ${formFieldId} OR name = ?
+* SELECT id FROM table WHERE id = ? OR username = {formFieldId} AND email = {formFieldId} OR name = ?
 
 
 
