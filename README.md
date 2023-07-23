@@ -19,6 +19,8 @@ It does not matter what is being returned in the query as long as if there is a 
 SELECT * FROM app_fd_item WHERE c_name = {name} AND id != {id}
 ```
 
+![Budget___Manage_Item_and_Joget_DX_and_jogetoss_jdbc-validator](https://github.com/jogetoss/jdbc-validator/assets/70784722/fcffe606-a8b0-45cd-85c8-dbbbafaff4fc)
+
 # Getting Help
 
 JogetOSS is a community-led team for open source software related to the [Joget](https://www.joget.org) no-code/low-code application platform.
