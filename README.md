@@ -2,14 +2,22 @@
 
 **JDBC Form Validator**
 
-JDBC Validator allows user to perform validation by writing a sql query. It supports single and multiple where clauses using placeholder (?) and form fields placeholders using curly braces. The ? and the form fields can appear in any order / number of times.
+JDBC Validator allows user to perform validation by writing a SQL query. When writing the SQL query, you can retrieve form fields value by using the symbol **?** and **{fieldId}**. The **?** symbol is used to retrieve the current form field value and curly braces **{fieldId}** to retrieve other form fields' values.
 
 ## Use Case Examples
-* SELECT id FROM table WHERE id = ? OR username = ? 
-* SELECT id FROM table WHERE id = ? OR username = {formFieldId}
-* SELECT id FROM table WHERE id = ? OR username = {formFieldId} AND email = {formFieldId} OR name = ?
+```
+SELECT id FROM table WHERE id != ? OR username = ? 
 
+SELECT id FROM table WHERE id != {id} OR username = {username}
 
+SELECT id FROM table WHERE id != {id} OR c_year = {year} AND email = {email}
+```
+
+It does not matter what is being returned in the query as long as if there is a row returned, the validation would fail (duplicate row exists). Your query might still return 1 row (the very record that you are trying to edit/save). To ensure that we are catering to this use case, we will need to skip our own record by using `id != {id}` in the WHERE clause. For example:-
+
+```
+SELECT * FROM app_fd_item WHERE c_name = {name} AND id != {id}
+```
 
 # Getting Help
 
