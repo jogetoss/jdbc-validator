@@ -35,7 +35,20 @@ import org.json.JSONObject;
 public class JdbcValidator extends FormValidator implements PluginWebSupport {
 
     private final static String MESSAGE_PATH = "message/JdbcValidator";
-
+    
+    @Override
+    public String getElementDecoration() {
+        String decoration = "";
+        String mandatory = (String) getProperty("mandatory");
+        if ("true".equals(mandatory)) {
+            decoration += " * ";
+        }
+        if (decoration.trim().length() > 0) {
+            decoration = decoration.trim();
+        }
+        return decoration;
+    }
+    
     @Override
     public boolean validate(Element element, FormData data, String[] values) {
         boolean result = true;
@@ -104,8 +117,9 @@ public class JdbcValidator extends FormValidator implements PluginWebSupport {
             if (!result) {
                 if (message == null || message.isEmpty()) {
                     data.addFormError(id, AppPluginUtil.getMessage("org.joget.marketplace.jdbcvalidator.duplicateValueMessage", getClassName(), MESSAGE_PATH));
+                }else{
+                    data.addFormError(id, message);
                 }
-                data.addFormError(id, message);
             }
 
         }
